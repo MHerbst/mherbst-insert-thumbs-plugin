@@ -1,0 +1,34 @@
+"mherbst_isrtthumbs": {
+
+    "title": "Insert thumbnail",
+    "description": "Insert thumbnails with optional floating or size into essays or pages."
+    "media": "photo",
+    "icon": "data:image/png;base64,iVB...",
+
+    "data": {
+
+        "preset": {
+            "label": "Preset",
+            "type": "select",
+            "options": [
+                { "label": "small", "value": "s" },
+                { "label": "Show title only", "value": "title" },
+                { "label": "Show caption only", "value": "caption" },
+                { "label": "Show title and caption", "value": "both" }
+            ]
+        },
+        "width": {
+            "label": "Width",
+            "type": "select",
+            "options": [
+                { "label": "small", "value": "s" },
+                { "label": "Show title only", "value": "title" },
+                { "label": "Show caption only", "value": "caption" },
+                { "label": "Show title and caption", "value": "both" }
+            ]
+        }
+
+
+    }
+
+}
