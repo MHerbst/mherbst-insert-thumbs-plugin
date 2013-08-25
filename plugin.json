@@ -1,34 +1,30 @@
-"mherbst_isrtthumbs": {
-
-    "title": "Insert thumbnail",
-    "description": "Insert thumbnails with optional floating or size into essays or pages."
-    "media": "photo",
-    "icon": "data:image/png;base64,iVB...",
-
-    "data": {
-
-        "preset": {
-            "label": "Preset",
-            "type": "select",
-            "options": [
-                { "label": "small", "value": "s" },
-                { "label": "Show title only", "value": "title" },
-                { "label": "Show caption only", "value": "caption" },
-                { "label": "Show title and caption", "value": "both" }
-            ]
-        },
-        "width": {
-            "label": "Width",
-            "type": "select",
-            "options": [
-                { "label": "small", "value": "s" },
-                { "label": "Show title only", "value": "title" },
-                { "label": "Show caption only", "value": "caption" },
-                { "label": "Show title and caption", "value": "both" }
-            ]
-        }
-
-
-    }
-
+{
+    "name": "Insert Thumbnails",
+    "version": "0.5",
+    "description": "Insert thumbnails into essays or pages.",
+    "author": {
+        "name": "Martin Herbst",
+        "link": "http://www.brisoft.de"
+    },
+    "shortcodes": {
+		"mhthumbs": {
+			"icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjExR/NCNwAAAEFJREFUOE/VjtEKACAMAvf/P23BJCRytLe6R/XGAk2+ESLsIV8Ypy/UcCWwcHAl2Jcmt0LeThgJe+R2i6o78pwADICPo3k+JK+QAAAAAElFTkSuQmCC",
+			"media": "photo",
+			"supports_linking": true,
+			"data": {
+				"caption": {
+					"label": "Caption",
+					"type": "select",
+					"options": [
+						{ "label": "Do not show", "value": "none" },
+						{ "label": "Show title only", "value": "title" },
+						{ "label": "Show caption only", "value": "caption" },
+						{ "label": "Show title and caption", "value": "both" }
+					]
+				}
+			},
+			"title": "Insert Thumbnail",
+			"description": "Select one item."
+		}
+	}
 }
