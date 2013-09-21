@@ -1,6 +1,6 @@
 {
     "name": "Insert Thumbnails",
-    "version": "0.5",
+    "version": "0.68",
     "description": "Insert thumbnails into essays or pages.",
     "author": {
         "name": "Martin Herbst",
@@ -11,20 +11,50 @@
 			"icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjExR/NCNwAAAEFJREFUOE/VjtEKACAMAvf/P23BJCRytLe6R/XGAk2+ESLsIV8Ypy/UcCWwcHAl2Jcmt0LeThgJe+R2i6o78pwADICPo3k+JK+QAAAAAElFTkSuQmCC",
 			"media": "photo",
 			"supports_linking": true,
+			"title": "Insert Thumbnail",
+			"description": "Select one item.",
 			"data": {
 				"caption": {
-					"label": "Caption",
+					"label": "Image Caption",
 					"type": "select",
+					"value": "c",
 					"options": [
-						{ "label": "Do not show", "value": "none" },
-						{ "label": "Show title only", "value": "title" },
-						{ "label": "Show caption only", "value": "caption" },
-						{ "label": "Show title and caption", "value": "both" }
+						{ "label": "Do not show", "value": "n" },
+						{ "label": "Show title only", "value": "t" },
+						{ "label": "Show caption only", "value": "c" },
+						{ "label": "Show title and caption", "value": "b" }
 					]
+				},
+				"floating" : {
+					"label": "Floating",
+					"type" : "select",
+					"value": "l", 
+					"options": [
+						{ "label": "left", "value": "l" },
+						{ "label": "right", "value": "r"},
+						{ "label": "no", "value": "n"}
+					]
+				},
+				"preset" : {
+					"label": "Use Preset Size",
+					"type": "select",
+					"value": "n",
+					"options": [
+						{ "label": "No", "value": "n" },
+						{ "label": "Tiny (60px)", "value": "t" },
+						{ "label": "Small (100px)", "value": "s" },
+						{ "label": "Medium (480px)", "value": "m" }
+					]
+				},
+				"width" : {
+					"label": "Width/Height in Pixel",
+					"type": "string"
+				},
+				"class" : {
+					"label": "Additional Classes",
+					"type" : "string"
 				}
-			},
-			"title": "Insert Thumbnail",
-			"description": "Select one item."
+			}
 		}
 	}
 }
