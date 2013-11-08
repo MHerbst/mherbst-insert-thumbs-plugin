@@ -2,15 +2,27 @@
 
 class MHerbstInsertThumbPlugin extends KokenPlugin {
 
+	
     function __construct()
     {
-        $this->register_shortcode('mhthumbs', 'render');
+        $this->register_shortcode('mherbst_thumbs', 'render');
     }
 
     function render($attributes)
     {
-    	$class = $attributes['class'].$attributes['width'];
+    	$query = $_SERVER['QUERY_STRING'];
+/*    	$handle = fopen("/test.log","a");
+    	fwrite($handle, ">>".$query."<<");
+    	fwrite($handle, "yxxxxx".stripos($query, "categories/slug")."\n");
+    	fclose($handle);
+*/    	
+    	// Dirty: in der Essay-List darf nichts gerendert werden
+    	if (stripos($query, "/type:essay/") || stripos($query, "categories/slug"))
+    		return "";
     	
+    	$class = $attributes['class'];
+    	$figclass = $attributes['figclass'];
+    	 
     	$style="";
     	if ($attributes['floating'] == "l")
     	{
@@ -84,11 +96,10 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
         return <<<HTML
 <div class="k-content-embed {$class}" {$style}>
     <koken:load source="content" filter:id="{$attributes['id']}">
-        <div class="k-content">
-        		<figure>{$linkbegin}<koken:img {$preset} {$width} {$lazy} />{$linkend}
+        <figure class="k-content {$figclass}">
+        		{$linkbegin}<koken:img {$preset} {$width} {$lazy} />{$linkend}
         		{$caption}
-        		</figure>
-        </div>
+      	</figure>
     </koken:load>
 </div>
 HTML;

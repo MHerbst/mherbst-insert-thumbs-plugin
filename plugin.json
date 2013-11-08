@@ -1,21 +1,21 @@
 {
     "name": "Insert Thumbnails",
-    "version": "0.68",
-    "description": "Insert thumbnails into essays or pages.",
+    "version": "0.73",
+    "description": "Insert (floating) images at any size into essays or pages.",
     "author": {
         "name": "Martin Herbst",
         "link": "http://www.brisoft.de"
     },
     "shortcodes": {
-		"mhthumbs": {
-			"icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjExR/NCNwAAAEFJREFUOE/VjtEKACAMAvf/P23BJCRytLe6R/XGAk2+ESLsIV8Ypy/UcCWwcHAl2Jcmt0LeThgJe+R2i6o78pwADICPo3k+JK+QAAAAAElFTkSuQmCC",
+		"mherbst_thumbs": {
+			"icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTFH80I3AAAAeklEQVQ4T6WOAQ6AIAwDiX/k/0+ZKzKpWIiLTc6Mbm0sZvYLaWaQZgZpMrVWW1EgFWJwqNT9UeA6rr773eZMAT4vdgW+94tNOGBF4aMAYFTwH2BmXH4xCqBm9neb6XhfsGIOMdjLEKOCAfYyxKhggL0MZZBmBml+x8oJv8WleXpoaCUAAAAASUVORK5CYII",
 			"media": "photo",
 			"supports_linking": true,
-			"title": "Insert Thumbnail",
+			"title": "Insert (floating) image",
 			"description": "Select one item.",
 			"data": {
 				"caption": {
-					"label": "Image Caption",
+					"label": "Image caption",
 					"type": "select",
 					"value": "c",
 					"options": [
@@ -36,7 +36,7 @@
 					]
 				},
 				"preset" : {
-					"label": "Use Preset Size",
+					"label": "Use preset size",
 					"type": "select",
 					"value": "n",
 					"options": [
@@ -47,11 +47,15 @@
 					]
 				},
 				"width" : {
-					"label": "Width/Height in Pixel",
+					"label": "Width/Height in pixel",
 					"type": "string"
 				},
 				"class" : {
-					"label": "Additional Classes",
+					"label": "Additional classes for surrounding div",
+					"type" : "string"
+				},
+				"figclass" : {
+					"label": "Additional classes for figure",
 					"type" : "string"
 				}
 			}
