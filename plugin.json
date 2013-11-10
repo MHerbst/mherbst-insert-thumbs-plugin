@@ -1,6 +1,6 @@
 {
     "name": "Insert Thumbnails",
-    "version": "0.73",
+    "version": "0.75",
     "description": "Insert (floating) images at any size into essays or pages.",
     "author": {
         "name": "Martin Herbst",
@@ -51,11 +51,7 @@
 					"type": "string"
 				},
 				"class" : {
-					"label": "Additional classes for surrounding div",
-					"type" : "string"
-				},
-				"figclass" : {
-					"label": "Additional classes for figure",
+					"label": "Additional CSS class(es)",
 					"type" : "string"
 				}
 			}
@@ -63,11 +59,11 @@
 	},
 
     "data" : {
-	"show_in_index": {
-	    "label": "Show thumbnails in essay index",
-	    "info": "Choose whether images should be shown in the essay index or not",
-	    "type": "boolean",
-	    "value": "true"
-	}
+		"show_in_index": {
+		    "label": "Show images in essay index",
+		    "info": "Choose whether images should be shown in the essay index or not",
+		    "type": "boolean",
+		    "value": "true"
+		}
     }
 }

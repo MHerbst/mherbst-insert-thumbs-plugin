@@ -16,8 +16,8 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
     	fwrite($handle, "yxxxxx".stripos($query, "categories/slug")."\n");
     	fclose($handle);
 */    	
-    	// Dirty: in der Essay-List darf nichts gerendert werden
-    	if (stripos($query, "/type:essay/") && $this->data->show_in_index === false)
+    	// 
+    	if ((stripos($query, "/type:essay/") || stripos($query, "categories/slug")) && !$this->data->show_in_index)
     		return "";
     	
     	$class = $attributes['class'];
