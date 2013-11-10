@@ -21,8 +21,6 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
     		return "";
     	
     	$class = $attributes['class'];
-    	$figclass = $attributes['figclass'];
-    	 
     	$style="";
     	if ($attributes['floating'] == "l")
     	{
@@ -96,7 +94,7 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
         return <<<HTML
 <div class="k-content-embed {$class}" {$style}>
     <koken:load source="content" filter:id="{$attributes['id']}">
-        <figure class="k-content {$figclass}">
+        <figure class="k-content">
         		{$linkbegin}<koken:img {$preset} {$width} {$lazy} />{$linkend}
         		{$caption}
       	</figure>
