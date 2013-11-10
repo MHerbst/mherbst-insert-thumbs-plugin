@@ -60,5 +60,14 @@
 				}
 			}
 		}
+	},
+
+    "data" : {
+	"show_in_index": {
+	    "label": "Show thumbnails in essay index",
+	    "info": "Choose whether images should be shown in the essay index or not",
+	    "type": "boolean",
+	    "value": "true"
 	}
+    }
 }
