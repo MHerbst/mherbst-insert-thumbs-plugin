@@ -28,7 +28,7 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
     	}
     	else if ($attributes['floating'] == "r")
     	{
-    		$style = 'style="float:right;';
+    		$style = 'style="float:right;"';
     	}
 	
 
