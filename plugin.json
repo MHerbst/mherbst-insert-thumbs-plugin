@@ -50,6 +50,10 @@
 					"label": "Width/Height in pixel",
 					"type": "string"
 				},
+                                "margin" : {
+					"label": "Margin in pixels",
+					"type" : "string"
+				},
 				"class" : {
 					"label": "Additional CSS class(es)",
 					"type" : "string"
