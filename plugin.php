@@ -22,15 +22,27 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
     	
     	$class = $attributes['class'];
     	$style="";
+        $margin = false;
+        if (is_numeric($attributes['margin']) && !empty($attributes['margin'])) {
+            $margin = $attributes['margin'];
+        }
     	if ($attributes['floating'] == "l")
     	{
-    		$style = 'style="float:left;"';
+    		$style = 'style="float:left;';
+                if ($margin) {
+                    $style .= ' margin-right: ' . $margin . 'px;';
+                }
+                $style .= '"'; // close style attribute
     	}
     	else if ($attributes['floating'] == "r")
     	{
-    		$style = 'style="float:right;"';
+    		$style = 'style="float:right;';
+                if ($margin) {
+                    $style .= ' margin-left: ' . $margin . 'px;';
+                }
+                $style .= '"'; // close style attribute
     	}
-	
+        
 
     	$width = ($attributes['width'] != "") ? 'width="'.$attributes['width'].'"' : "";
     	switch($attributes['preset']) 
