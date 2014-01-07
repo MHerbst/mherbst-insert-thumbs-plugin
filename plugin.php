@@ -12,14 +12,13 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
     {
     	$query = $_SERVER['QUERY_STRING'];
 /*    	$handle = fopen("/test.log","a");
-    	fwrite($handle, ">>".$query."<<");
-    	fwrite($handle, "yxxxxx".stripos($query, "categories/slug")."\n");
-    	fclose($handle);
+    	fwrite($handle, ">>".$query."<<\n");
+    	fwrite($handle, "StriPos:".stripos($query, "/text/slug:")."--".stripos($query, "/type:essay/")."\n");
 */    	
-    	// 
-    	if ((stripos($query, "/type:essay/") || stripos($query, "categories/slug")) && !$this->data->show_in_index)
-    		return "";
-    	
+
+    	if (stripos($query, "/text/slug:") === false && !$this->data->show_in_index)
+			return "";
+    	 
     	$class = $attributes['class'];
     	$style="";
         $margin = false;
