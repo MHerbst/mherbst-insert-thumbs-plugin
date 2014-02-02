@@ -2,7 +2,6 @@
 
 class MHerbstInsertThumbPlugin extends KokenPlugin {
 
-	
     function __construct()
     {
         $this->register_shortcode('mherbst_thumbs', 'render');
@@ -11,12 +10,13 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
     function render($attributes)
     {
     	$query = $_SERVER['QUERY_STRING'];
-/*    	$handle = fopen("/test.log","a");
+ /*   	$handle = fopen("/test.log","a");
     	fwrite($handle, ">>".$query."<<\n");
     	fwrite($handle, "StriPos:".stripos($query, "/text/slug:")."--".stripos($query, "/type:essay/")."\n");
-*/    	
+    	fwrite($handle, "Stripos2:".stripos($query, "/type:page/"));
+  */  	
 
-    	if (stripos($query, "/text/slug:") === false && !$this->data->show_in_index)
+    	if ((stripos($query, "/text/slug:") === false && !$this->data->show_in_index) && stripos($query, "/type:page/") === false)
 			return "";
     	 
     	$class = $attributes['class'];
