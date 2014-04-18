@@ -22,6 +22,7 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
     	$class = $attributes['class'];
     	$style="";
         $margin = false;
+        $size = "";
         if (is_numeric($attributes['margin']) && !empty($attributes['margin'])) {
             $margin = $attributes['margin'];
         }
@@ -41,7 +42,10 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
                 }
                 $style .= '"'; // close style attribute
     	}
-        
+
+		if (!empty($attributes['size'])) {
+			$size = ' size="' . $attributes['size'] . '"';
+		}
 
     	$width = ($attributes['width'] != "") ? 'width="'.$attributes['width'].'"' : "";
     	switch($attributes['preset']) 
@@ -106,7 +110,7 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
 <div class="k-content-embed {$class}" {$style}>
     <koken:load source="content" filter:id="{$attributes['id']}">
         <figure class="k-content">
-        		{$linkbegin}<koken:img {$preset} {$width} {$lazy} />{$linkend}
+        		{$linkbegin}<koken:img {$size} {$preset} {$width} {$lazy} />{$linkend}
         		{$caption}
       	</figure>
     </koken:load>

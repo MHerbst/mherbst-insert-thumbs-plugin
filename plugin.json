@@ -50,7 +50,11 @@
 					"label": "Width/Height in pixel",
 					"type": "string"
 				},
-                                "margin" : {
+				"size" : {
+					"label": "Aspect ratio",
+					"type" : "string"
+				},
+				"margin" : {
 					"label": "Margin in pixels",
 					"type" : "string"
 				},
