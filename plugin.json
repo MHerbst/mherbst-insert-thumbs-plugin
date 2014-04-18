@@ -1,6 +1,6 @@
 {
     "name": "Insert Thumbnails",
-    "version": "0.79",
+    "version": "0.80",
     "description": "Insert (floating) images at any size into essays or pages.",
     "author": {
         "name": "Martin Herbst",
@@ -50,7 +50,11 @@
 					"label": "Width/Height in pixel",
 					"type": "string"
 				},
-                                "margin" : {
+				"size" : {
+					"label": "Aspect ratio",
+					"type" : "string"
+				},
+				"margin" : {
 					"label": "Margin in pixels",
 					"type" : "string"
 				},
