@@ -1,10 +1,10 @@
 {
     "name": "Insert Thumbnails",
-    "version": "0.80",
+    "version": "0.89",
     "description": "Insert (floating) images at any size into essays or pages.",
     "author": {
         "name": "Martin Herbst",
-        "link": "http://www.brisoft.de"
+        "link": "https://www.brisoft.de"
     },
     "shortcodes": {
 		"mherbst_thumbs": {
@@ -54,9 +54,18 @@
 					"label": "Aspect ratio",
 					"type" : "string"
 				},
+				"crop" : {
+					"label": "Crop",
+					"type" : "select",
+					"value": "false",
+					"options": [
+						{ "label": "No", "value": "false" },
+						{ "label": "Yes", "value": "true" }
+					]
+				},
 				"margin" : {
 					"label": "Margin in pixels",
-					"type" : "string"
+					"type": "string"
 				},
 				"class" : {
 					"label": "Additional CSS class(es)",
