@@ -18,9 +18,12 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
 			return "";
 
 		$class = $attributes['class'];
+		if ($class === "") {
+			$class = $this->data->default_css;
+		}
+			
 		$style="";
 		$margin = false;
-		$size = "";
 		if (is_numeric($attributes['margin']) && !empty($attributes['margin'])) {
 			$margin = $attributes['margin'];
 		}
@@ -40,27 +43,35 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
 
 		if (!empty($attributes['size'])) {
 			$size = ' size="' . $attributes['size'] . '"';
-		}
+		} 
+		else {
+			$size = "";
+		} 
 
 		$width = ($attributes['width'] != "") ? 'width="'.$attributes['width'].'"' : "";
-		$crop =  ($attributes['crop'] == "true") ? 'crop="true"' : '';
-		switch($attributes['preset']) {
-			case "t":
-				$preset = 'preset="tiny"';
-				break;
-			case "s":
-				$preset = 'preset="small"';
-				break;
-			case "m":
-				$preset = 'preset="medium"';
-				break;
-			default:
-				$preset = "";
-		}
-		$lazy = 'lazy="true"';
-		if ($preset == "" && $width == "")
-			$lazy = "";
+		$height = ($attributes['height'] != "") ? 'height="'.$attributes['height'].'"' : "";
 
+		$crop = "";
+		$preset = "";
+		if ($attributes['crop'] == "true") {		
+			$crop = 'crop="true"';
+		}
+		if ($crop == "" && $size == "") { // ignore preset if crop is set to true or size is given		
+			switch($attributes['preset']) {
+				case "t":
+					$preset = 'preset="tiny"';
+					break;
+				case "s":
+					$preset = 'preset="small"';
+					break;
+				case "m":
+					$preset = 'preset="medium"';
+					break;
+				case "ml":
+					$preset = 'preset="medium-large"';
+					break;
+			}
+		}
 		switch($attributes['caption'])
 		{
 			case "t":
@@ -81,6 +92,16 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
 			$caption = '<figcaption class="k-content-text">'.$caption.'</figcaption>';
 		}
 		
+		$addStyle = "";
+		if ($width != "" && $size != "") { // in this case the width must be set on the surrounding tag otherwise Koken would ignore size
+			$addStyle = 'style="width: '.$attributes['width'].'px"';
+			$width = "";
+		}
+		$lazy = 'lazy="true"';
+		if ($preset == "" && $width == "") {
+			$lazy = "";
+			$addStyle = 'style="width: 100%;"';	
+		}
 		switch($attributes['link'])
 		{
 			case "lightbox":
@@ -94,18 +115,21 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
 				$imgdata = 'data="content.context"';
 				break;
 			case "custom";
-				$linkbegin = '<koken:link url="'.$attributes['custom_url'].'">';
+				$linkbegin = '<koken:link url="'.$attributes['custom_url'].'" target="_blank">';
 				break;
 			default:
 				$linkbegin = "";
 						
 		}
 		$linkend = ($linkbegin != "") ? "</koken:link>" : "";
+		if ($this->data->add_link_to_caption && $caption != "" && $linkbegin != "") {
+			$caption = $linkbegin.$caption.$linkend;
+		} 
 		return <<<HTML
 <div class="k-content {$class}" {$style}>
 	<koken:load source="content" filter:id="{$attributes['id']}">
-		<figure class="k-content-embed">
-			{$linkbegin}<koken:img {$size} {$preset} {$width} {$lazy} {$crop} />{$linkend}
+		<figure class="k-content-embed" {$addStyle} {$preset}>
+			{$linkbegin}<koken:img {$size} {$preset} {$width} {$height} {$lazy} {$crop} />{$linkend}
 			{$caption}
 		</figure>
 	</koken:load>

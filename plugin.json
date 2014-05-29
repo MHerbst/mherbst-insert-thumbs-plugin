@@ -1,10 +1,10 @@
 {
     "name": "Insert Thumbnails",
-    "version": "0.89",
+    "version": "0.91",
     "description": "Insert (floating) images at any size into essays or pages.",
     "author": {
         "name": "Martin Herbst",
-        "link": "https://www.brisoft.de"
+        "link": "https://www.brisoft.de/en/insert-images-essays-posts/"
     },
     "shortcodes": {
 		"mherbst_thumbs": {
@@ -43,11 +43,16 @@
 						{ "label": "No", "value": "n" },
 						{ "label": "Tiny (60px)", "value": "t" },
 						{ "label": "Small (100px)", "value": "s" },
-						{ "label": "Medium (480px)", "value": "m" }
+						{ "label": "Medium (480px)", "value": "m" },
+						{ "label": "Medium-Large (800px)", "value": "ml" }
 					]
 				},
 				"width" : {
-					"label": "Width/Height in pixel",
+					"label": "Width in pixel",
+					"type": "string"
+				},
+				"height" : {
+					"label": "Height in pixel",
 					"type": "string"
 				},
 				"size" : {
@@ -70,6 +75,15 @@
 				"class" : {
 					"label": "Additional CSS class(es)",
 					"type" : "string"
+				},
+				"newwin" : {
+					"label": "Open link in new Window",
+					"type" : "select",
+					"value": "false",
+					"options": [
+						{ "label": "No", "value": "false" },
+						{ "label": "Yes", "value": "true" }
+					]
 				}
 			}
 		}
@@ -78,9 +92,20 @@
     "data" : {
 		"show_in_index": {
 		    "label": "Show images in essay index",
-		    "info": "Choose whether images should be shown in the essay index or not",
-		    "type": "boolean",
+		    "info" : "Choose whether images should be shown in the essay index or not",
+		    "type" : "boolean",
 		    "value": "true"
+		},
+		"add_link_to_caption" : {
+			"label": "Add link to caption",
+			"info" : "If checked all image captions will also link to the selected target", 
+			"type" : "boolean",
+			"value": "false"
+		},
+		"default_css" : {
+			"label" : "Default CSS class",
+			"info" : "This CSS class will be applied to all images if not other class is specified",
+			"type" : "string"
 		}
     }
 }
