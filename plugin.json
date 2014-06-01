@@ -1,6 +1,6 @@
 {
     "name": "Insert (floating) images",
-    "version": "0.91",
+    "version": "0.93",
     "description": "Insert (floating) images at any size into essays or pages.",
     "author": {
         "name": "Martin Herbst",
@@ -95,6 +95,12 @@
 		    "info" : "Choose whether images should be shown in the essay index or not",
 		    "type" : "boolean",
 		    "value": "true"
+		},
+		"lazy_load" : {
+			"label": "Use lazy loading of images",
+			"info" : "Enable this option to load images when they are scrolled into view. Do not enable this option an themes using Ajax like Madison 2",
+			"type" : "boolean",
+			"value": "false"
 		},
 		"add_link_to_caption" : {
 			"label": "Add link to caption",

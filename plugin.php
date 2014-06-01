@@ -48,7 +48,24 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
 			$size = "";
 		} 
 
-		$width = ($attributes['width'] != "") ? 'width="'.$attributes['width'].'"' : "";
+		$width = "";
+		$presetVal = $attributes['preset'];
+		if ($attributes['width'] != "") {
+			$width = 'width="'.$attributes['width'].'"';
+			$wi = intval($attributes['width']);
+//			Tiny" (60px), "small" (100px), "medium" (480px), "medium_large" (800)
+			if ($presetVal != "no") {
+				if ($wi > 800) {
+					$presetVal = "no";
+				} else if ($wi > 480 && $presetVal != "ml") {
+					$presetVal = "ml";
+				} else if ($wi > 100 && ($presetVal == "t" || $presetVal == "s")) {
+					$presetVal = "m";
+				} else if ($wi > 60 && $presetVal == "t") {
+					$presetVal = "s";
+				}
+			}
+		}
 		$height = ($attributes['height'] != "") ? 'height="'.$attributes['height'].'"' : "";
 
 		$crop = "";
@@ -57,7 +74,7 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
 			$crop = 'crop="true"';
 		}
 		if ($crop == "" && $size == "") { // ignore preset if crop is set to true or size is given		
-			switch($attributes['preset']) {
+			switch($presetVal) {
 				case "t":
 					$preset = 'preset="tiny"';
 					break;
@@ -97,8 +114,10 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
 			$addStyle = 'style="width: '.$attributes['width'].'px"';
 			$width = "";
 		}
-		$lazy = 'lazy="true"';
-		if ($preset == "" && $width == "") {
+		if ($this->data->lazy_load) {
+			$lazy = 'lazy="true"';
+		}
+		if ($preset == "" && $width == "" && $addStyle == "") {
 			$lazy = "";
 			$addStyle = 'style="width: 100%;"';	
 		}
@@ -126,9 +145,10 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
 			$caption = $linkbegin.$caption.$linkend;
 		} 
 		return <<<HTML
+		<!-- koken:img {$size} {$preset} {$width} {$height} {$lazy} {$crop} add: {$addStyle} -->
 <div class="k-content {$class}" {$style}>
 	<koken:load source="content" filter:id="{$attributes['id']}">
-		<figure class="k-content-embed" {$addStyle} {$preset}>
+		<figure class="k-content-embed" {$addStyle}>
 			{$linkbegin}<koken:img {$size} {$preset} {$width} {$height} {$lazy} {$crop} />{$linkend}
 			{$caption}
 		</figure>
