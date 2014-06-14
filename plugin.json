@@ -1,6 +1,6 @@
 {
     "name": "Insert (floating) images",
-    "version": "0.93",
+    "version": "0.95",
     "description": "Insert (floating) images at any size into essays or pages.",
     "author": {
         "name": "Martin Herbst",
@@ -49,28 +49,44 @@
 				},
 				"width" : {
 					"label": "Width in pixel",
-					"type": "string"
+					"type": "string",
+					"validation": {
+						"type": "regex",
+						"rule": "^[0-9]*$",
+						"error_message": "Only Integers are allowed."
+					}
 				},
 				"height" : {
 					"label": "Height in pixel",
-					"type": "string"
+					"type": "string",
+					"validation": {
+						"type": "regex",
+						"rule": "^[0-9]*$",
+						"error_message": "Only Integers are allowed."
+					}
 				},
 				"size" : {
 					"label": "Aspect ratio",
-					"type" : "string"
+					"type" : "string",
+					"validation": {
+						"type": "regex",
+						"rule": "^([1-9][0-9]*:[1-9][0-9]*)?$",
+						"error_message": "Enter two numeric values separated by colon, e.g. '3:2'"
+					}
 				},
 				"crop" : {
 					"label": "Crop",
-					"type" : "select",
-					"value": "false",
-					"options": [
-						{ "label": "No", "value": "false" },
-						{ "label": "Yes", "value": "true" }
-					]
+					"type" : "boolean",
+					"value": "false"
 				},
 				"margin" : {
 					"label": "Margin in pixels",
-					"type": "string"
+					"type": "string",
+					"validation": {
+						"type": "regex",
+						"rule": "^[0-9]*$",
+						"error_message": "Only Integers are allowed."
+					}
 				},
 				"class" : {
 					"label": "Additional CSS class(es)",
@@ -78,12 +94,8 @@
 				},
 				"newwin" : {
 					"label": "Open link in new Window",
-					"type" : "select",
-					"value": "false",
-					"options": [
-						{ "label": "No", "value": "false" },
-						{ "label": "Yes", "value": "true" }
-					]
+					"type" : "boolean",
+					"value": "false"
 				}
 			}
 		}
