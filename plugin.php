@@ -85,7 +85,7 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
 					$preset = 'preset="medium"';
 					break;
 				case "ml":
-					$preset = 'preset="medium-large"';
+					$preset = 'preset="medium_large"';
 					break;
 			}
 		}
