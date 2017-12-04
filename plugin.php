@@ -23,19 +23,22 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
 		}
 			
 		$style="";
-		$margin = false;
+        $floatclass = "";
+        $margin = false;
 		if (is_numeric($attributes['margin']) && !empty($attributes['margin'])) {
 			$margin = $attributes['margin'];
 		}
 		if ($attributes['floating'] == "l") {
 			$style = 'style="float:left;';
+            $floatclass = 'floating-left';
 			if ($margin) {
 				$style .= ' margin-right: ' . $margin . 'px;';
 			}
 			$style .= '"'; // close style attribute
 		} else if ($attributes['floating'] == "r") {
 			$style = 'style="float:right;';
-			if ($margin) {
+            $floatclass = 'floating-right';
+            if ($margin) {
 				$style .= ' margin-left: ' . $margin . 'px;';
 			}
 			$style .= '"'; // close style attribute
@@ -146,7 +149,7 @@ class MHerbstInsertThumbPlugin extends KokenPlugin {
 		} 
 		return <<<HTML
 		<!-- koken:img {$size} {$preset} {$width} {$height} {$lazy} {$crop} add: {$addStyle} -->
-<div class="k-content {$class}" {$style}>
+<div class="k-content {$floatclass} {$class}" {$style}>
 	<koken:load source="content" filter:id="{$attributes['id']}">
 		<figure class="k-content-embed" {$addStyle}>
 			{$linkbegin}<koken:img {$size} {$preset} {$width} {$height} {$lazy} {$crop} />{$linkend}
